@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+message User {
+  required string username = 1;
+  required string email = 2;
+  required int32 age = 3;
+  optional bool admin = 4;
+}
