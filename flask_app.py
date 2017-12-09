@@ -7,7 +7,7 @@ app.secret_key = 'secret'
 
 @app.route('/', methods=['GET'])
 def index():
-    return 'Hello, World!'
+    return 'Message Encryption Benchmark'
 
 
 @app.route('/test/json/', methods=['POST'])
