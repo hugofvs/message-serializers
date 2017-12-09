@@ -1,9 +1,13 @@
-from flask import Flask, request
-from message_formats.small_proto3_pb2 import User
-import msgpack
+from flask import Flask
 
 
 app = Flask(__name__)
+app.secret_key = 'secret'
+
+
+@app.route('/', methods=['GET'])
+def index():
+    return 'Hello, World!'
 
 
 @app.route('/test/json/', methods=['POST'])
