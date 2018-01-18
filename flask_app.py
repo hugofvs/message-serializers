@@ -32,7 +32,7 @@ def test_protobufs_view():
     return 'Ok', 200
 
 
-@app.route('/test/messagepack/', methods=['POST'])
+@app.route('/test/msgpack/', methods=['POST'])
 def test_messagepack_view():
     data = msgpack.unpackb(request.get_data(), encoding='utf-8')
     email = data['email']
