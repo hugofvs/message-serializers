@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+message User {
+  required string _id = 1;
+  optional bool isActive = 2;
+  required string balance = 3;
+  required string picture = 4;
+  required int32 age = 5;
+  required string firstName = 6;
+  required string lastName = 7;
+  required string email = 8;
+  required string phone = 9;
+  required string address = 10;
+  required string about = 11;
+  required string registered = 12;
+  repeated string tags = 13;
+  repeated Friend friends = 14;
+}
+
+message Friend {
+  required string _id = 1;
+  required string firstName = 2;
+  required string lastName = 3;
+  required string last_login = 4;
+  optional string last_message = 5;
+}
