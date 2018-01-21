@@ -1,3 +1,4 @@
+import json
 from flask import Flask, request
 from message_formats.big_proto2_pb2 import User
 import msgpack
@@ -19,7 +20,7 @@ def test_base_view():
 
 @app.route('/test/json/', methods=['POST'])
 def test_json_view():
-    data = request.get_json()
+    data = json.loads(request.get_json())
     email = data['email']
     return 'Ok', 200
 
