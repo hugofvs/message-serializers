@@ -5,10 +5,11 @@ import msgpack
 
 
 fh = codecs.open('message_formats/big_message.json')
+data = fh.read()
 
 
 def prepare_data():
-    data_dict = json.loads(fh.read())
+    data_dict = json.loads(data)
     return msgpack.dumps(data_dict)
 
 

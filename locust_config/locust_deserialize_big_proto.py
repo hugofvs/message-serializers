@@ -1,14 +1,26 @@
+from inspect import getsourcefile
+import os.path
+import sys
+
+current_path = os.path.abspath(getsourcefile(lambda: 0))
+current_dir = os.path.dirname(current_path)
+parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
+
+sys.path.insert(0, parent_dir)
+
+
 import codecs
 import json
 from locust import HttpLocust, TaskSet, task
 from message_formats.small_proto2_pb2 import User, Friend
 
 
-fh = codecs.open('message_formats/small_message.json')
+fh = codecs.open('message_formats/big_message.json')
+data = fh.read()
 
 
 def prepare_data():
-    data_dict = json.loads(fh.read())
+    data_dict = json.loads(data)
     user = User()
     user._id = data_dict['_id']
     user.isActive = data_dict['isActive']

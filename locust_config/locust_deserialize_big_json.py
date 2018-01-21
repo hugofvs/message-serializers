@@ -3,10 +3,11 @@ from locust import HttpLocust, TaskSet, task
 
 
 fh = codecs.open('message_formats/big_message.json')
+data = fh.read()
 
 
 def prepare_data():
-    return fh.read()
+    return data
 
 
 class JsonTask(TaskSet):
