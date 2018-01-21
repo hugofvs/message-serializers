@@ -40,7 +40,7 @@ def prepare_data():
 
     for fr in data_dict['friends']:
         friend = Friend()
-        friend._id = fr['id']
+        friend._id = fr['_id']
         friend.firstName = fr['firstName']
         friend.lastName = fr['lastName']
         friend.last_login = fr['last_login']
