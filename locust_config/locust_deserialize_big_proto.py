@@ -12,14 +12,18 @@ sys.path.insert(0, parent_dir)
 import codecs
 import json
 from locust import HttpLocust, TaskSet, task
-from message_formats.small_proto2_pb2 import User, Friend
+from message_formats.big_proto2_pb2 import User, Friend
 
 
 fh = codecs.open('message_formats/big_message.json')
 data = fh.read()
+data_cache = None
 
 
 def prepare_data():
+    if data_cache:
+        return data_cache
+
     data_dict = json.loads(data)
     user = User()
     user._id = data_dict['_id']
@@ -40,14 +44,15 @@ def prepare_data():
 
     for fr in data_dict['friends']:
         friend = Friend()
-        friend._id = fr['id']
+        friend._id = fr['_id']
         friend.firstName = fr['firstName']
         friend.lastName = fr['lastName']
         friend.last_login = fr['last_login']
         friend.last_message = fr['last_message']
         user.friends.extend([friend])
 
-    return user.SerializeToString()
+    data_cache = user.SerializeToString()
+    return data_cache
 
 
 class ProtoTask(TaskSet):
