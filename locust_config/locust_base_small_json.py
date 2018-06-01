@@ -9,10 +9,14 @@ data = fh.read()
 def prepare_data():
     return data
 
+
+data_cache = prepare_data()
+
+
 class JsonTask(TaskSet):
     @task
     def post(self):
-        self.client.post('/test/base/', json=prepare_data())
+        self.client.post('/test/base/', json=data_cache)
 
 
 class WebLocust(HttpLocust):

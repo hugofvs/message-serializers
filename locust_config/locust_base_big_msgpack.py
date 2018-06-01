@@ -13,10 +13,13 @@ def prepare_data():
     return msgpack.dumps(data_dict)
 
 
+data_cache = prepare_data()
+
+
 class ProtoTask(TaskSet):
     @task
     def post(self):
-        self.client.post("/test/base/", data=prepare_data())
+        self.client.post("/test/base/", data=data_cache)
 
 
 class WebLocust(HttpLocust):

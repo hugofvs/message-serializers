@@ -28,10 +28,13 @@ def prepare_data():
     return user.SerializeToString()
 
 
+data_cache = prepare_data()
+
+
 class ProtoTask(TaskSet):
     @task
     def post(self):
-        self.client.post("/test/protobuf/", data=prepare_data())
+        self.client.post("/test/protobuf/", data=data_cache)
 
 
 class WebLocust(HttpLocust):

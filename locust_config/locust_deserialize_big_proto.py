@@ -17,13 +17,9 @@ from message_formats.big_proto2_pb2 import User, Friend
 
 fh = codecs.open('message_formats/big_message.json')
 data = fh.read()
-data_cache = None
 
 
 def prepare_data():
-    if data_cache:
-        return data_cache
-
     data_dict = json.loads(data)
     user = User()
     user._id = data_dict['_id']
@@ -51,14 +47,16 @@ def prepare_data():
         friend.last_message = fr['last_message']
         user.friends.extend([friend])
 
-    data_cache = user.SerializeToString()
-    return data_cache
+    return user.SerializeToString()
+
+
+data_cache = prepare_data()
 
 
 class ProtoTask(TaskSet):
     @task
     def post(self):
-        self.client.post("/test/protobuf/", data=prepare_data())
+        self.client.post("/test/protobuf/", data=data_cache)
 
 
 class WebLocust(HttpLocust):
