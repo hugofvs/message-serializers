@@ -21,4 +21,4 @@ class JsonTask(TaskSet):
 
 class WebLocust(HttpLocust):
     task_set = JsonTask
-    stop_timeout = 1800  # 30 minutes
+    stop_timeout = 10*60  # 10 minutes

@@ -39,4 +39,4 @@ class ProtoTask(TaskSet):
 
 class WebLocust(HttpLocust):
     task_set = ProtoTask
-    stop_timeout = 1800  # 30 minutes
+    stop_timeout = 10*60  # 10 minutes
