@@ -6,6 +6,7 @@ import msgpack
 
 app = Flask(__name__)
 app.secret_key = 'secret'
+app.config['MAX_CONTENT_LENGTH'] = 500000
 
 
 @app.route('/', methods=['GET'])
