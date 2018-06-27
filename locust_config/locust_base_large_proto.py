@@ -22,6 +22,7 @@ data = fh.read()
 def prepare_data():
     data_dict = json.loads(data)
     people = People()
+
     for user_dict in data_dict['users']:
 
         user = User()
@@ -50,7 +51,7 @@ def prepare_data():
             friend.last_message = fr['last_message']
             user.friends.extend([friend])
 
-        people.users.extend(user)
+        people.users.extend([user])
 
     return people.SerializeToString()
 
