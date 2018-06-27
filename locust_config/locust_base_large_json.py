@@ -2,7 +2,7 @@ import codecs
 from locust import HttpLocust, TaskSet, task
 
 
-fh = codecs.open('message_formats/big_message.json')
+fh = codecs.open('json_samples/large_message.json')
 data = fh.read()
 
 

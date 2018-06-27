@@ -12,10 +12,10 @@ sys.path.insert(0, parent_dir)
 import codecs
 import json
 from locust import HttpLocust, TaskSet, task
-from message_formats.small_proto2_pb2 import User
+from protobuf_config.small_proto2_pb2 import User
 
 
-fh = codecs.open('message_formats/small_message.json')
+fh = codecs.open('json_samples/small_message.json')
 data = fh.read()
 
 

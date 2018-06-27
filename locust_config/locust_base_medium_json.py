@@ -2,7 +2,7 @@ import codecs
 from locust import HttpLocust, TaskSet, task
 
 
-fh = codecs.open('message_formats/xl_message.json')
+fh = codecs.open('json_samples/medium_message.json')
 data = fh.read()
 
 

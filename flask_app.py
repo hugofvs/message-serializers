@@ -1,6 +1,6 @@
 import json
 from flask import Flask, request
-from message_formats.big_proto2_pb2 import User
+from protobuf_config.medium_proto2_pb2 import User
 import msgpack
 
 

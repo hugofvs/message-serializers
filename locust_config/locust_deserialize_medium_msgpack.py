@@ -4,7 +4,7 @@ from locust import HttpLocust, TaskSet, task
 import msgpack
 
 
-fh = codecs.open('message_formats/xl_message.json')
+fh = codecs.open('json_samples/medium_message.json')
 data = fh.read()
 
 
@@ -19,7 +19,7 @@ data_cache = prepare_data()
 class ProtoTask(TaskSet):
     @task
     def post(self):
-        self.client.post("/test/base/", data=data_cache)
+        self.client.post("/test/msgpack/", data=data_cache)
 
 
 class WebLocust(HttpLocust):

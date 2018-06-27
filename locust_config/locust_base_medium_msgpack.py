@@ -4,7 +4,7 @@ from locust import HttpLocust, TaskSet, task
 import msgpack
 
 
-fh = codecs.open('message_formats/big_message.json')
+fh = codecs.open('json_samples/medium_message.json')
 data = fh.read()
 
 
