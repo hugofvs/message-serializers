@@ -1,6 +1,7 @@
 import json
 from flask import Flask, request
 from protobuf_config.medium_proto2_pb2 import User
+from protobuf_config.large_proto2_pb2 import People
 import msgpack
 
 
@@ -19,7 +20,7 @@ def test_base_view():
 
 @app.route('/test/json/', methods=['POST'])
 def test_json_view():
-    data = json.loads(request.get_json())
+    data = request.get_json()
     email = data['email']
     return 'Ok', 200
 
@@ -36,4 +37,26 @@ def test_protobufs_view():
 def test_messagepack_view():
     data = msgpack.unpackb(request.get_data(), encoding='utf-8')
     email = data['email']
+    return 'Ok', 200
+
+
+@app.route('/test/large_json/', methods=['POST'])
+def test_json_view():
+    data = request.get_json()
+    email = data['users'][0]['email']
+    return 'Ok', 200
+
+
+@app.route('/test/large_protobuf/', methods=['POST'])
+def test_protobufs_view():
+    p = People()
+    p.ParseFromString(request.get_data().replace(b'\r\n', b'\n'))
+    email = p.users[0].email
+    return 'Ok', 200
+
+
+@app.route('/test/large_msgpack/', methods=['POST'])
+def test_messagepack_view():
+    data = msgpack.unpackb(request.get_data(), encoding='utf-8')
+    email = data['users'][0]['email']
     return 'Ok', 200

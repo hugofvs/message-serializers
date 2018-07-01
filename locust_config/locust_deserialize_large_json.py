@@ -16,7 +16,7 @@ data_cache = prepare_data()
 class JsonTask(TaskSet):
     @task
     def post(self):
-        self.client.post('/test/json/', json=data_cache)
+        self.client.post('/test/large_json/', json=data_cache)
 
 
 class WebLocust(HttpLocust):

@@ -56,7 +56,7 @@ data_cache = prepare_data()
 class ProtoTask(TaskSet):
     @task
     def post(self):
-        self.client.post("/test/protobuf/", data=data_cache)
+        self.client.post("/test/large_protobuf/", data=data_cache)
 
 
 class WebLocust(HttpLocust):

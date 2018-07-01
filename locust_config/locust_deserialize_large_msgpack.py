@@ -19,7 +19,7 @@ data_cache = prepare_data()
 class ProtoTask(TaskSet):
     @task
     def post(self):
-        self.client.post("/test/msgpack/", data=data_cache)
+        self.client.post("/test/large_msgpack/", data=data_cache)
 
 
 class WebLocust(HttpLocust):
