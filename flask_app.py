@@ -41,7 +41,7 @@ def test_messagepack_view():
 
 @app.route('/test/large_json/', methods=['POST'])
 def test_large_json_view():
-    data = request.get_json()
+    data = json.loads(request.get_json())
     email = data['users'][0]['email']
     return 'Ok', 200
 
