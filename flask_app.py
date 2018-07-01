@@ -40,14 +40,14 @@ def test_messagepack_view():
 
 
 @app.route('/test/large_json/', methods=['POST'])
-def test_json_view():
+def test_large_json_view():
     data = request.get_json()
     email = data['users'][0]['email']
     return 'Ok', 200
 
 
 @app.route('/test/large_protobuf/', methods=['POST'])
-def test_protobufs_view():
+def test_large_protobufs_view():
     from protobuf_config.large_proto2_pb2 import People
     p = People()
     p.ParseFromString(request.get_data().replace(b'\r\n', b'\n'))
@@ -56,7 +56,7 @@ def test_protobufs_view():
 
 
 @app.route('/test/large_msgpack/', methods=['POST'])
-def test_messagepack_view():
+def test_large_messagepack_view():
     data = msgpack.unpackb(request.get_data(), encoding='utf-8')
     email = data['users'][0]['email']
     return 'Ok', 200
