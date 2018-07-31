@@ -40,4 +40,4 @@ To run the experiments under a controlled environment, we launched 2 instances i
 
 
 ## Acknowledgments
-- A big thank you to (@marcelolebre)[https://github.com/marcelolebre] (my master Yoda) who introduced me to this technologies and pushed me to publish the blogpost.
+A big thank you to [@marcelolebre](https://github.com/marcelolebre) (my master Yoda) who introduced me to this technologies and pushed me to publish the blogpost.
