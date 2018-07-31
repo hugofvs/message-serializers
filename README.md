@@ -36,9 +36,8 @@ This project was built to benchmark various serializers used in context of HTTP 
 
 
 ## VM Instances
+To run the experiments under a controlled environment, we launched 2 instances in Google Cloud - g1-small (1 vCPU, 1.7 GB memory) - one for the Flask server and another just for Locust.
 
 
-## Authors
-
-Compile Protobuf to python
-protoc --python_out=message_formats/ message_formats/giant_proto2.proto
+## Acknowledgments
+- A big thank you to (@marcelolebre)[https://github.com/marcelolebre] (my master Yoda) who introduced me to this technologies and pushed me to publish the blogpost.
